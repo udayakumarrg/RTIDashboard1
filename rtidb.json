@@ -1,0 +1,204 @@
+{
+    "insurancePolicyList": {
+        "policies":[
+            {
+                "policyNumber": "123456789",
+                "policyType": "Auto",
+                "zipcode": "60074",
+                "state": "Illinois",
+                "Agentdetails":{
+                    "agentName": "Agent Name1",
+                    "agentNumber": "A05678"
+                }
+            },
+            {
+                "policyNumber": "213456789",
+                "policyType": "Auto",
+                "zipcode": "60074",
+                "state": "Illinois",
+                "Agentdetails":{
+                    "agentName": "Agent Name1",
+                    "agentNumber": "A05678"
+                }
+            },
+            {
+                "policyNumber": "132456789",
+                "policyType": "Auto",
+                "zipcode": "60074",
+                "state": "Illinois",
+                "Agentdetails":{
+                    "agentName": "Agent Name2",
+                    "agentNumber": "A05678"
+                }
+            },
+            {
+                "policyNumber": "124356789",
+                "policyType": "Home",
+                "zipcode": "60074",
+                "state": "Illinois",
+                "Agentdetails":{
+                    "agentName": "Agent Name1",
+                    "agentNumber": "A05678"
+                }
+            },
+            {
+                "policyNumber": "123546789",
+                "policyType": "Home",
+                "zipcode": "60074",
+                "state": "Illinois",
+                "Agentdetails":{
+                    "agentName": "Agent Name2",
+                    "agentNumber": "A05678"
+                }
+            },
+            {
+                "policyNumber": "123456789",
+                "policyType": "Auto",
+                "zipcode": "60074",
+                "state": "Illinois",
+                "Agentdetails":{
+                    "agentName": "Agent Name2",
+                    "agentNumber": "A05678"
+                }
+            },
+            {
+                "policyNumber": "123465789",
+                "policyType": "Life",
+                "zipcode": "60074",
+                "state": "Illinois",
+                "Agentdetails":{
+                    "agentName": "Agent Name1",
+                    "agentNumber": "A05678"
+                }
+            },
+            {
+                "policyNumber": "123457689",
+                "policyType": "Renters",
+                "zipcode": "60074",
+                "state": "Illinois",
+                "Agentdetails":{
+                    "agentName": "Agent Name2",
+                    "agentNumber": "A05678"
+                }
+            },
+            {
+                "policyNumber": "123456879",
+                "policyType": "Auto",
+                "zipcode": "60073",
+                "state": "Illinois",
+                "Agentdetails":{
+                    "agentName": "Agent Name1",
+                    "agentNumber": "A05678"
+                }
+            },
+            {
+                "policyNumber": "123456798",
+                "policyType": "Home",
+                "zipcode": "60073",
+                "state": "Illinois",
+                "Agentdetails":{
+                    "agentName": "Agent Name1",
+                    "agentNumber": "A05678"
+                }
+            },
+            {
+                "policyNumber": "312456789",
+                "policyType": "Renters",
+                "zipcode": "60073",
+                "state": "Illinois",
+                "Agentdetails":{
+                    "agentName": "Agent Name2",
+                    "agentNumber": "A05678"
+                }
+            },
+            {
+                "policyNumber": "321456789",
+                "policyType": "Auto",
+                "zipcode": "53076",
+                "state": "Wisconsin",
+                "Agentdetails":{
+                    "agentName": "Agent Name1",
+                    "agentNumber": "A05678"
+                }
+            },
+            {
+                "policyNumber": "321546789",
+                "policyType": "Auto",
+                "zipcode": "53076",
+                "state": "Wisconsin",
+                "Agentdetails":{
+                    "agentName": "Agent Name2",
+                    "agentNumber": "A05678"
+                }
+            },
+            {
+                "policyNumber": "321465789",
+                "policyType": "Home",
+                "zipcode": "53076",
+                "state": "Wisconsin",
+                "Agentdetails":{
+                    "agentName": "Agent Name1",
+                    "agentNumber": "A05678"
+                }
+            },
+            {
+                "policyNumber": "321456879",
+                "policyType": "Life",
+                "zipcode": "53076",
+                "state": "Wisconsin",
+                "Agentdetails":{
+                    "agentName": "Agent Name2",
+                    "agentNumber": "A05678"
+                }
+            }
+        ]
+    },
+    "insurancetrendByZipcode":{
+        "zipTrend":[
+            {
+                "zipcode":"53076",
+                "policyTrend":{
+                    "Auto":"40",
+                    "Home": "20",
+                    "Renters": "20",
+                    "Life": "20"
+                }
+            },
+            {
+                "zipcode":"53074",
+                "policyTrend":{
+                    "Auto":"40",
+                    "Home": "20",
+                    "Renters": "20",
+                    "Life": "20"
+                }
+            },
+            {
+                "zipcode":"60070",
+                "policyTrend":{
+                    "Auto":"20",
+                    "Home": "20",
+                    "Renters": "30",
+                    "Life": "30"
+                }
+            },
+            {
+                "zipcode":"60090",
+                "policyTrend":{
+                    "Auto":"10",
+                    "Home": "10",
+                    "Renters": "70",
+                    "Life": "10"
+                }
+            },
+            {
+                "zipcode":"53076",
+                "policyTrend":{
+                    "Auto":"30",
+                    "Home": "40",
+                    "Renters": "30"
+                }
+            }
+        ]
+    }
+}
