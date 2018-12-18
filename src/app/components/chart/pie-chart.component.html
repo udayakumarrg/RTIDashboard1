@@ -1,0 +1,8 @@
+<form #searchZipCode="ngForm">
+    <input name="userInput" [(ngModel)]="formValue" #zipcode="ngModel" type="text">
+    <button type="submit" (click)="togglePieChart(); setZipCodeTrendData(formValue">Show Trending Data</button>
+</form>
+<br>
+<div>
+    <canvas id="barchart" width="200" height="50%">{{ trendData }}</canvas>
+</div>
