@@ -1,4 +1,4 @@
-import { AgentDetailsViewModel } from './agnetDetailsView.model';
+import { AgentDetailsViewModel } from './agentDetailsViewModel'
 
 export class PoliciesViewModel {
     public policyNumber: string = null;

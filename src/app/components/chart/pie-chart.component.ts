@@ -1,13 +1,12 @@
 
 import { Component, OnInit } from '@angular/core';
 import { RetrieveDataService } from '../../services/retrieveData/retrieve-data.service';
-import { ZipcodeLocationViewModel } from '../../models/zipCodeLocationView.model'; 
+import { ZipcodeLocationViewModel } from '../../models/zipCodeLocationView.model';
 import { Chart } from 'chart.js';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  selector: 'pie-chart',
+  templateUrl: './pie-chart.component.html',
 })
 
 export class PieChartComponent {
@@ -22,6 +21,7 @@ formValue: string;
 
 
     setZipCodeTrendData(zipCode: string) {
+        debugger;
         this.retrieveDataService.getTrendByZipCode(zipCode)
             .then(response => {
                 if (response.zipTrend) {
@@ -79,5 +79,9 @@ formValue: string;
             }
         });
     }
+    }
+
+    togglePieChart() {
+        this.showData = !this.showData;
     }
 }
