@@ -1,4 +1,16 @@
-export class WeatherViewModel {
+class MetaData {
+    skip: number;
+    top: number;
+    count: number;
+    filter: string[];
+    format: string;
+    orderedBy: any;
+    select: any;
+    entityName: string;
+    url: string[];
+}
+
+export class DisasterDeclarationsSummaries {
     public disasterNumber = 0;
     public ihProgramDeclared =	false;
     public iaProgramDeclared = false;
@@ -18,4 +30,9 @@ export class WeatherViewModel {
     public hash: string = null;
     public lastRefresh: string = null;
     public id: string = null;
+}
+
+export class WeatherViewModel {
+    metaData: MetaData;
+    DisasterDeclarationsSummaries: DisasterDeclarationsSummaries[];
 }

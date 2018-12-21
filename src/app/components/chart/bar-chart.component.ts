@@ -1,18 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { RetrieveDataService } from '../../services/retrieveData/retrieve-data.service'
-import { WeatherViewModel } from '../../models/weatherView.model';
+import { WeatherViewModel, DisasterDeclarationsSummaries } from '../../models/weatherView.model';
 import { Chart } from 'chart.js';
 
 class WeatherViewModelByYear {
-  weatherViewModel: WeatherViewModel;
-  year: string;
+  declarationSummary: DisasterDeclarationsSummaries;
+  disasterType: string;
 }
 
-class Event {
-  eventType: string;
-  volume: number;
-  year: string;
-}
 
 @Component({
   selector: 'bar-chart',
@@ -21,24 +16,25 @@ class Event {
 
 export class BarChartComponent {
   title = 'RTIDashboard';
-  data: WeatherViewModel[] = [];
-  weatherViewModelByYear: WeatherViewModelByYear[] = [];
+  data: WeatherViewModel = new WeatherViewModel;
+  weatherViewModelByDisaster: WeatherViewModelByYear[] = [];
   showTable = false;
   chart = [];
-  incidents2012 = 0;
-  incidents2013 = 0;
-  incidents2014 = 0;
-  incidents2015 = 0;
-  incidents2016 = 0;
-  incidents2017 = 0;
+  tornadoes = 0;
+  floods = 0;
+  hurricanes = 0;
+  other = 0;
+  hurricanNumber = 0;
+  floodsNUmber = 0;
+  tornadoNumber = 0;
 
   constructor(private retrieveDataService: RetrieveDataService) {}
 
   sendData(state: string, disaster: string) {
-    this.retrieveDataService.getWeather(state, disaster).then(response => {
+    this.retrieveDataService.getWeather(state).then(response => {
       this.showTable = true;
       this.data = response;
-      this.divideByYear();
+      this.divideByDisaster(this.data);
 
     });
 
@@ -52,12 +48,12 @@ export class BarChartComponent {
       this.chart = new Chart(ctx, {
         type: 'bar',
         data: {
-          labels: ['2012', '2013', '2014', '2016', '2017'],
+          labels: ['Tornadoes', 'Hurricanes', 'Floods', 'Other'],
           datasets: [
             {
-              label: 'Tornados',
+              label: 'Disasters',
               backgroundColor: '#3e95cd',
-              data: [this.incidents2012, this.incidents2013, this.incidents2014, this.incidents2016, this.incidents2017]
+              data: [this.tornadoes, this.hurricanes, this.floods, this.other]
             }
           ]
         },
@@ -65,45 +61,41 @@ export class BarChartComponent {
           legend: { display: false },
           title: {
             display: true,
-            text: 'Tordados each year'
+            text: 'Disasters over last two years'
           }
         }
     });
   }
   }
 
-  divideByYear() {
+  divideByDisaster(data: WeatherViewModel) {
     // tslint:disable-next-line:prefer-const
-    for (let block of this.data) {
-      let year = block.incidentBeginDate.substring(0, 4);
+    for (let block of data.DisasterDeclarationsSummaries) {
+      debugger;
+      let disasterType = block.incidentType;
       let tempWeatherViewModel = new WeatherViewModelByYear;
-      tempWeatherViewModel.weatherViewModel = block;
-      tempWeatherViewModel.year = year;
-      this.weatherViewModelByYear.push(tempWeatherViewModel);
+      tempWeatherViewModel.declarationSummary = block;
+      tempWeatherViewModel.disasterType = disasterType;
+      this.weatherViewModelByDisaster.push(tempWeatherViewModel);
     }
     debugger;
-    this.incidentsPerYear(this.weatherViewModelByYear);
+    this.incidentsPerYear(this.weatherViewModelByDisaster);
   }
 
-  incidentsPerYear(yearChunks: WeatherViewModelByYear[]) {
+  incidentsPerYear(diasters: WeatherViewModelByYear[]) {
     // tslint:disable-next-line:prefer-const
-    for (let yearChunk of yearChunks) {
-      switch (yearChunk.year) {
-        case '2012':
-          this.incidents2012 ++;
-          break;
-        case '2013':
-          this.incidents2013 ++;
-          break;
-        case '2014':
-          this.incidents2014 ++;
-          break;
-        case '2015':
-          this.incidents2015 ++;
-          break;
-        case '2016':
-          this.incidents2016 ++;
-          break;
+    for (let disaster of diasters) {
+      if(disaster.disasterType === 'Hurricane' && disaster.declarationSummary.disasterNumber !== this.hurricanNumber) {
+        this.hurricanes ++;
+        this.hurricanNumber = disaster.declarationSummary.disasterNumber;
+      }
+      else if(disaster.disasterType === 'Flood' && disaster.declarationSummary.disasterNumber !== this.floodsNUmber) {
+        this.floods ++;
+        this.floodsNUmber = disaster.declarationSummary.disasterNumber;
+      }
+      else if(disaster.disasterType === 'Tornado' && disaster.declarationSummary.disasterNumber !== this.tornadoNumber) {
+        this.tornadoes ++;
+        this.tornadoNumber = disaster.declarationSummary.disasterNumber;
       }
     }
     this.showTable = true;
