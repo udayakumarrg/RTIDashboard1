@@ -1,0 +1,8 @@
+<form #searchZipCode="ngForm">
+    <input label="state" name="stateInput" [(ngModel)]="stateValue" #state="ngModel" type="text">
+    <button type="submit" (click)='sendData(stateValue, disasterValue)'>Show Trending Weather Data</button>
+</form>
+<br>
+<div>
+    <canvas id="barchart" width="200" height="50%">{{ trendData }}</canvas>
+</div>
