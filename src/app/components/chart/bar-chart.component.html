@@ -1,5 +1,5 @@
 <form #searchZipCode="ngForm">
-    <input label="state" name="stateInput" [(ngModel)]="stateValue" #state="ngModel" type="text">
+    <input label="County" name="stateInput" [(ngModel)]="stateValue" #state="ngModel" type="text">
     <button type="submit" (click)='sendData(stateValue, disasterValue)'>Show Trending Weather Data</button>
 </form>
 <br>

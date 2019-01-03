@@ -46,19 +46,20 @@ export class RetrieveDataService {
             });
         }
 
-        getWeather(state: string): Promise<WeatherViewModel> {
+        getWeather(county: string): Promise<WeatherViewModel> {
             // tslint:disable-next-line:no-shadowed-variable
             return new Promise((resolve, reject) => {
                 const currentDate = new Date();
                 const twoYearsAgo = currentDate.getFullYear() -2;
+                const countyFormateed = `${county} (County)`;
                 currentDate.setFullYear(twoYearsAgo);
                 let day = String(currentDate.getDay());
-                day = ("0" + day).slice(-2);
+                day = ('0' + day).slice(-2);
                 let month = String(currentDate.getMonth());
-                month = ("0" + month).slice(-2);
+                month = '01';
                 this.http
                 // tslint:disable-next-line:max-line-length
-                .get<WeatherViewModel>(`https://www.fema.gov/api/open/v1/DisasterDeclarationsSummaries?$filter=declarationDate%20ge%20%27${twoYearsAgo}-${month}-${day}T04:00:00.000z%27%20and%20state%20eq%20%27${state}%27`)
+                .get<WeatherViewModel>(`https://www.fema.gov/api/open/v1/DisasterDeclarationsSummaries?$filter=declaredCountyArea%20eq%20%27${county}%20(County)%27%20and%20declarationDate%20gt%20%27${twoYearsAgo}-${month}-${day}T04:00:00.000z%27`)
                 .toPromise().then(response => {
                     if (response) {
                         resolve(response);
